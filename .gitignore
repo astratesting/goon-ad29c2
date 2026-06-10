@@ -1,7 +1,6 @@
 # Python
 __pycache__/
 *.pyc
-.env
 venv/
 .venv/
 
@@ -10,6 +9,12 @@ node_modules/
 .next/
 dist/
 
+# Environment
+.env
+.env.local
+.env*.local
+
 # Misc
 .DS_Store
 *.log
+.oc_session_id

@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink-0: #050507;
+  --ink-1: #0a0a0a;
+  --ink-2: #111114;
+  --ink-3: #1a1a1f;
+  --line: #232328;
+  --text-hi: #f4f4f5;
+  --text-mid: #a1a1aa;
+  --text-lo: #52525b;
+  --indigo: #4f46e5;
+  --cyan: #06b6d4;
+  --teal: #14b8a6;
+  --gradient: linear-gradient(135deg, #4f46e5 0%, #06b6d4 50%, #14b8a6 100%);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 56px;
+}
+
+body {
+  background-color: var(--ink-0);
+  color: var(--text-hi);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-gradient-shift {
+    animation: none !important;
+    background-position: 0% 50% !important;
+  }
+
+  .animate-pulse-glow {
+    animation: none !important;
+    opacity: 0.3 !important;
+  }
+
+  .reveal-hidden {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .prompt-stream {
+    width: 100% !important;
+    animation: none !important;
+  }
+
+  .demo-section-animate {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* Reveal animation classes */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gradient text utility */
+.text-gradient {
+  background: var(--gradient);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-static {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Gradient border trick */
+.gradient-border {
+  position: relative;
+  background: var(--ink-2);
+  border-radius: 0.5rem;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--gradient);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Prompt streaming animation */
+.prompt-stream {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: prompt-type 1.2s steps(60) forwards;
+}
+
+@keyframes prompt-type {
+  from { max-width: 0; }
+  to { max-width: 100%; }
+}
+
+/* Demo section stagger */
+.demo-section-animate {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: demo-fade-in 400ms ease-out forwards;
+}
+
+@keyframes demo-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Caret blink */
+.caret-blink::after {
+  content: '█';
+  animation: blink 1s step-end infinite;
+  color: var(--indigo);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink-0);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink-3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--line);
+}
+
+/* Details/summary styling */
+details summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary::marker {
+  display: none;
+  content: '';
+}
+
+/* Mobile sheet */
+.mobile-sheet {
+  transform: translateX(100%);
+  transition: transform 200ms ease-out;
+}
+
+.mobile-sheet.open {
+  transform: translateX(0);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--indigo);
+  outline-offset: 2px;
+}
+
+/* JSON-LD */
+[type="application/ld+json"] {
+  display: none;
+}

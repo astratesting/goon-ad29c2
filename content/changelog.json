@@ -1,0 +1,49 @@
+[
+  {
+    "version": "0.1.4",
+    "date": "2025-01-12",
+    "items": [
+      "Added waitlist position numbers",
+      "Fixed mobile nav focus trap",
+      "Improved section reveal animations"
+    ]
+  },
+  {
+    "version": "0.1.3",
+    "date": "2025-01-08",
+    "items": [
+      "Added live demo frame with streaming sections",
+      "Improved pricing card gradient border",
+      "Fixed FAQ accordion keyboard accessibility"
+    ]
+  },
+  {
+    "version": "0.1.2",
+    "date": "2025-01-05",
+    "items": [
+      "Added prompt-mock terminal to hero",
+      "Atlas grid SVG with glowing data points",
+      "Mobile sheet navigation with focus trap"
+    ]
+  },
+  {
+    "version": "0.1.1",
+    "date": "2025-01-02",
+    "items": [
+      "Added feature grid with inline mock elements",
+      "Pricing teaser with Free and Pro tiers",
+      "FAQ section with native details/summary"
+    ]
+  },
+  {
+    "version": "0.1.0",
+    "date": "2024-12-28",
+    "items": [
+      "Initial launch",
+      "Hero section with gradient text and CTA",
+      "How-it-works section",
+      "Waitlist form with email validation",
+      "Sticky header with anchor navigation"
+    ]
+  }
+]
